@@ -1,0 +1,31 @@
+# Check kafka images: sudo docker images -a | grep kafka
+# Stop docker if needed: sudo docker stop --time=30 kafka  
+
+# Check all running containers: sudo docker container ls | grep kafka
+
+# Check current services in docker-compose.yml: sudo docker-compose ps --services
+# Check if services are running: sudo docker-compose ps --services --filter "status=running"
+# Check if services up: sudo docker-compose ps | awk '$4 == "Up" {print $1}' | grep kafka
+# Start compose: sudo docker-compose -f docker-compose.yml up -d
+# Add more brokers sudo docker-compose scale kafka=3
+# Stop a cluster: sudo docker-compose stop
+
+# Make kafka.sh executable: sudo chmod +x kafka-shell.sh
+# Connect to kafka by sh: sudo sh ./kafka-shell.sh 192.168.0.109 192.168.0.109:2181
+# open KAFKA_HOME: cd /opt/kafka
+# KAFKA_HOME config: cd /opt/kafka/config
+version: '3.8'
+services:
+  zookeeper:
+    image: wurstmeister/zookeeper
+    ports:
+      - "2181:2181"
+  kafka:
+    image: wurstmeister/kafka
+    ports:
+      - "9092"
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: 192.168.0.109
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
