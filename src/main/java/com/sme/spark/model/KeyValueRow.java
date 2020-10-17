@@ -10,7 +10,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
  */
 public class KeyValueRow
 {
-    private int key;
+    private long key;
     private String value;
 
     public KeyValueRow()
@@ -24,12 +24,12 @@ public class KeyValueRow
         this.value = value;
     }
 
-    public int getKey()
+    public long getKey()
     {
         return key;
     }
 
-    public void setKey(int key)
+    public void setKey(long key)
     {
         this.key = key;
     }

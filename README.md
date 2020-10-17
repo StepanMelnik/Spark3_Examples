@@ -13,6 +13,8 @@ See description how to run integration tests below.
 
 Unit tests in <a href="https://github.com/StepanMelnik/Spark3_Examples/tree/master/src/test/java/com/sme/spark/rdd">JavaRDD</a> folder cover transformation and action functionalities of Core spark.
 
+**WordOffsetTest** test prepares the same data as described in LargeFileParser project and asserts the same result.
+
 ### Load-Save data
 
 Unit tests in <a href="https://github.com/StepanMelnik/Spark3_Examples/tree/master/src/test/java/com/sme/spark/loadsave">Load-Save</a> folder cover functionalities to load and save data in different sources.
